@@ -34,3 +34,56 @@ Chrome DevTools is a set of web developer tools built directly into the Google C
 - [Debugging JavaScript](https://developers.google.com/web/fundamentals/performance/rendering/debugging-javascript)
 
 This document serves as a guide for utilizing Chrome DevTools effectively in frontend development and debugging processes.
+
+# Skill: Chrome DevTools Debugging
+
+## Purpose
+Step-by-step rules the Debugger agent MUST follow when diagnosing runtime issues.
+
+---
+
+## When Debugger Agent is Invoked
+- Implementer has made changes but page does not render correctly
+- Tester reports a failing test
+- Console errors are present on page load
+- Visual output does not match expected design
+
+---
+
+## Debugging Steps (in order)
+
+### Step 1: Navigate and Screenshot
+1. Use Puppeteer MCP to navigate to the target URL
+2. Take a screenshot immediately on load
+3. Record page title and H1 text
+
+### Step 2: Capture Console Output
+1. Evaluate `window.__console_errors` or capture via MCP console listener
+2. List all errors and warnings
+3. Classify each as: `BLOCKING` | `WARNING` | `INFO`
+
+### Step 3: Inspect DOM
+1. Check that expected elements exist: headings, buttons, links, cards
+2. Verify CSS classes are applied correctly
+3. Check for missing or broken images
+
+### Step 4: Check Network
+1. Verify page returns HTTP 200
+2. Check for any failed asset requests (images, fonts, CSS)
+3. Check for failed API calls if applicable
+
+### Step 5: Root Cause Report
+Debugger MUST output:
+- Screenshot (attached)
+- Console errors list (classified)
+- DOM issues found (if any)
+- Network failures (if any)
+- Root cause hypothesis
+- Recommended fix → hand back to Implementer agent
+
+---
+
+## Evidence Requirements
+Debugger agent MUST NEVER say "it looks fine" without attaching:
+- At least one screenshot
+- Console output (even if empty)

@@ -1,29 +1,38 @@
-# Contents of /hello-world-agentic-frontend/hello-world-agentic-frontend/subagents/tester.md
+# Subagent: Tester
 
-This file outlines the capabilities and responsibilities of the tester subagent, which is responsible for writing and executing tests in the project.
+## Role
+Write and execute Playwright E2E tests. Verify features meet acceptance criteria.
 
-## Tester Subagent
+## Activation
+- Debugger outputs `PASS` verdict
+- Orchestrator requests test coverage for a feature
 
-### Overview
-The tester subagent is designed to automate the process of writing, executing, and verifying tests for the frontend application. It leverages Playwright for end-to-end testing and integrates with Chrome DevTools for debugging purposes.
+## Inputs Required
+- Feature description and acceptance criteria
+- Route(s) to test: `http://localhost:3000/[route]`
+- List of key UI elements to verify
 
-### Responsibilities
-- **Write Tests**: Create automated tests for various components and pages of the application.
-- **Execute Tests**: Run the tests in a browser environment to ensure functionality and performance.
-- **Verify Results**: Analyze test results and logs to confirm that the application behaves as expected.
-- **Debugging**: Utilize Chrome DevTools to identify and resolve issues that arise during testing.
+## Mandatory Pre-checks
+1. Read `skills/playwright-testing.md` fully before writing tests
+2. Confirm dev server is running at `http://localhost:3000`
+3. Check `tests/e2e/` for existing spec files to avoid duplication
 
-### Skills Required
-- Proficiency in Playwright for writing and executing tests.
-- Understanding of frontend development principles, particularly with Next.js and React.
-- Familiarity with debugging techniques using Chrome DevTools.
+## Execution Steps
+1. Create `tests/e2e/[feature-name].spec.ts`
+2. Follow test writing rules in `skills/playwright-testing.md`
+3. Cover all required checks from the Required Test Coverage checklist
+4. Run: `npx playwright test tests/e2e/[feature-name].spec.ts --headed`
+5. Capture result + screenshot
 
-### Usage
-To utilize the tester subagent, invoke its methods to create and run tests as part of the development workflow. Ensure that the necessary configurations in the MCP files are set up to facilitate seamless interaction with the testing framework.
+## Outputs
+- Spec file path
+- Pass/fail count (e.g. `4 passed, 0 failed`)
+- Screenshot of final tested UI state
+- Playwright HTML report path
+- Verdict: `ALL PASS` or `FAILURES FOUND`
+- If FAILURES FOUND: attach failure details → hand to Debugger agent
 
-### Example
-1. **Creating a Test**: Define a new test case for a specific component or page.
-2. **Running the Test**: Execute the test using Playwright to simulate user interactions.
-3. **Analyzing Results**: Review the output and logs to verify the correctness of the application.
-
-This subagent plays a crucial role in maintaining the quality and reliability of the application through automated testing practices.
+## Guardrails
+- DO NOT mark task done if any test fails
+- DO NOT write tests that only test implementation details — test user-visible behavior
+- DO NOT skip the console error check test
