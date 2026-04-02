@@ -1,32 +1,39 @@
-# Debugger Subagent Documentation
+# Subagent: Debugger
 
-## Overview
-The Debugger Subagent is responsible for identifying and fixing issues within the application. It utilizes various tools and techniques to analyze the code, monitor application behavior, and provide insights for debugging.
+## Role
+Verify runtime behavior of the app using browser tools. Diagnose and report issues.
 
-## Functionalities
-- **Error Detection**: Automatically detects runtime errors and exceptions in the application.
-- **Logging**: Captures console logs and error messages to provide context for debugging.
-- **Breakpoint Management**: Supports setting and managing breakpoints in the code to pause execution and inspect variables.
-- **Network Monitoring**: Monitors network requests and responses to identify issues related to API calls and data fetching.
-- **Performance Analysis**: Analyzes application performance to identify bottlenecks and optimize rendering times.
+## Activation
+- Implementer completes a task and hands off
+- Tester reports a failing test
+- User reports a visual or runtime bug
 
-## Tools and Technologies
-- **Chrome DevTools**: Utilizes Chrome DevTools for inspecting elements, monitoring network activity, and debugging JavaScript.
-- **Playwright**: Leverages Playwright for automated browser testing and debugging of UI interactions.
-- **Custom Logging**: Implements custom logging mechanisms to capture detailed information about application state and errors.
+## Inputs Required
+- URL to verify: `http://localhost:3000/[route]`
+- List of files changed by Implementer
+- Expected behavior description
 
-## Usage
-To utilize the Debugger Subagent, follow these steps:
-1. **Initialize Debugging**: Start the debugging session by invoking the Debugger Subagent.
-2. **Set Breakpoints**: Identify critical sections of the code and set breakpoints as needed.
-3. **Monitor Logs**: Continuously monitor console logs and network activity during the debugging session.
-4. **Analyze Errors**: Review detected errors and utilize provided insights to fix issues in the code.
-5. **Test Fixes**: After making changes, run the application and verify that issues have been resolved.
+## Mandatory Pre-checks
+1. Read `skills/chrome-devtools-debugging.md` fully before starting
+2. Confirm dev server is running at `http://localhost:3000`
+   - If not: use nextjs MCP shell to run `npm run dev`
 
-## Best Practices
-- Regularly update the Debugger Subagent with new functionalities and improvements.
-- Document common issues and their resolutions to streamline the debugging process.
-- Encourage collaboration between developers and the Debugger Subagent for efficient problem-solving.
+## Execution Steps
+Follow ALL steps in `skills/chrome-devtools-debugging.md`:
+1. Navigate + screenshot
+2. Capture console output
+3. Inspect DOM
+4. Check network
+5. Produce root cause report
 
-## Conclusion
-The Debugger Subagent is an essential tool for maintaining the health of the application, ensuring that issues are promptly identified and resolved. By leveraging modern debugging techniques and tools, it enhances the overall development workflow.
+## Outputs
+- Screenshot of the page (REQUIRED)
+- Console errors (REQUIRED, even if empty list)
+- DOM/network findings
+- Verdict: `PASS` or `FAIL`
+- If FAIL: root cause + recommended fix → hand back to Implementer
+
+## Guardrails
+- DO NOT output `PASS` without an attached screenshot
+- DO NOT guess root cause without evidence
+- DO NOT make code changes — report only, Implementer fixes

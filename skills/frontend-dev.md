@@ -1,66 +1,48 @@
-# Skills Required for Frontend Development
+# Skill: Frontend Development
 
-This document outlines the essential skills and capabilities required for effective frontend development using the ShadCN, TailwindCSS, Next.js, and React stack. 
+## Purpose
+Step-by-step rules the Implementer agent MUST follow when making any code change.
 
-## Core Skills
+---
 
-1. **React Fundamentals**
-   - Understanding of React components, props, state, and lifecycle methods.
-   - Ability to create functional and class components.
-   - Familiarity with hooks (e.g., useState, useEffect).
+## Stack Rules
+- Framework: Next.js App Router (app/ directory only, no pages/)
+- Styling: TailwindCSS utility classes only, no inline styles, no CSS modules
+- Components: Functional components only, no class components
+- Language: TypeScript strict mode, all props must be explicitly typed
+- Path alias: Always use `@/` for imports (e.g. `@/components/ui/card`)
+- Images: Use next/image for local images, plain <img> only for external URLs
 
-2. **Next.js Proficiency**
-   - Knowledge of Next.js routing and page structure.
-   - Ability to implement server-side rendering (SSR) and static site generation (SSG).
-   - Understanding of API routes and data fetching methods.
+---
 
-3. **Styling with TailwindCSS**
-   - Proficiency in using TailwindCSS for styling components.
-   - Ability to customize Tailwind configuration for project-specific design needs.
-   - Understanding of utility-first CSS principles.
+## File Conventions
+- Pages: `app/[route]/page.tsx` — default export, named `[Route]Page`
+- Layouts: `app/[route]/layout.tsx` — default export
+- Components: `components/ui/[name].tsx` — named export
+- Types: Define types at the top of the file, above the component
 
-4. **Component Design**
-   - Skills in creating reusable and maintainable UI components.
-   - Familiarity with component libraries and design systems.
+---
 
-5. **State Management**
-   - Understanding of state management solutions (e.g., Context API, Redux).
-   - Ability to manage global and local state effectively.
+## Pre-implementation Checklist
+Before writing any code:
+1. Identify all files to create or modify
+2. Confirm no new dependencies are needed — if they are, state them explicitly
+3. Confirm `@/` path alias resolves correctly for all imports
+4. Check if a similar component already exists in `components/ui/`
 
-## Testing and Debugging Skills
+---
 
-1. **Playwright Testing**
-   - Knowledge of writing end-to-end tests using Playwright.
-   - Ability to automate browser interactions and verify application behavior.
-   - Familiarity with test-driven development (TDD) practices.
+## Implementation Steps
+1. Create or modify component files first
+2. Create or modify page files second
+3. Update navigation/links in `app/page.tsx` last
+4. Never modify `app/globals.css` or `app/layout.tsx` unless explicitly asked
 
-2. **Chrome DevTools**
-   - Proficiency in using Chrome DevTools for debugging frontend applications.
-   - Ability to inspect elements, monitor network requests, and analyze performance.
-   - Skills in using the console for logging and debugging JavaScript code.
+---
 
-## Development Workflow
-
-1. **Version Control**
-   - Familiarity with Git for version control and collaboration.
-   - Ability to manage branches, commits, and pull requests effectively.
-
-2. **Build Tools and Configuration**
-   - Understanding of build tools (e.g., Webpack, Babel) and their configuration.
-   - Ability to configure Next.js and TailwindCSS for optimal performance.
-
-3. **Responsive Design**
-   - Skills in creating responsive layouts that work across various devices.
-   - Understanding of CSS Flexbox and Grid for layout design.
-
-## Collaboration and Communication
-
-1. **Agile Methodologies**
-   - Familiarity with Agile development practices and methodologies.
-   - Ability to work collaboratively in a team environment.
-
-2. **Documentation**
-   - Skills in documenting code and writing clear, concise comments.
-   - Ability to create user guides and technical documentation for projects.
-
-By mastering these skills, developers will be well-equipped to build robust and user-friendly frontend applications using the specified technology stack.
+## Post-implementation Checklist
+After writing code:
+1. Confirm all imports resolve to real files
+2. Confirm all TypeScript types are explicit (no `any`)
+3. Confirm no hardcoded colors outside Tailwind classes
+4. Hand off to Debugger agent with: list of changed files + URL to verify

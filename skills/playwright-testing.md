@@ -1,54 +1,66 @@
-# Playwright Testing Skills
+# Skill: Playwright Testing
 
-This document outlines the skills necessary for writing and executing tests using Playwright in a Next.js application. It covers the essential concepts, best practices, and examples to help developers effectively utilize Playwright for end-to-end testing.
+## Purpose
+Step-by-step rules the Tester agent MUST follow when writing and running tests.
 
-## Overview of Playwright
+---
 
-Playwright is a powerful automation library that allows developers to write tests for web applications across different browsers. It provides a high-level API to interact with web pages, making it easier to simulate user interactions and verify application behavior.
+## Test File Location
+- All tests go in: `tests/e2e/[feature-name].spec.ts`
+- One spec file per feature/page
 
-## Key Skills
+---
 
-1. **Understanding Playwright Basics**
-   - Familiarity with Playwright's API and its core concepts, such as pages, contexts, and selectors.
-   - Knowledge of how to install and set up Playwright in a Next.js project.
+## Test Writing Rules
+1. Always import from `@playwright/test`
+2. Always use `test.describe()` to group tests per page/feature
+3. Always navigate using full URL: `http://localhost:3000/[route]`
+4. Use `page.locator()` over `page.$()`
+5. Use semantic selectors in order of preference:
+   - `getByRole()` — preferred
+   - `getByText()`
+   - `locator('h1')`, `locator('[data-testid]')`
+   - CSS selectors — last resort only
 
-2. **Writing Tests**
-   - Ability to write end-to-end tests using Playwright's syntax.
-   - Understanding how to structure tests for maintainability and readability.
+---
 
-3. **Browser Interaction**
-   - Skills in simulating user interactions, such as clicking buttons, filling forms, and navigating between pages.
-   - Knowledge of how to handle asynchronous operations and wait for elements to be visible or enabled.
+## Required Test Coverage Per Feature
+For every new page or component, the Tester MUST verify:
+- [ ] Page loads without errors (HTTP 200)
+- [ ] Page title is correct
+- [ ] Main heading (h1) is visible and correct
+- [ ] Key UI elements are visible
+- [ ] Navigation links work (click → correct URL)
+- [ ] No console errors during load
 
-4. **Assertions and Verification**
-   - Ability to use assertions to verify that the application behaves as expected.
-   - Familiarity with Playwright's built-in assertion library or integration with other assertion libraries.
+---
 
-5. **Running Tests**
-   - Knowledge of how to run Playwright tests from the command line or through a CI/CD pipeline.
-   - Understanding how to configure test environments and manage test data.
+## Running Tests
+```bash
+# Run all tests
+npm run test
 
-6. **Debugging Tests**
-   - Skills in using Playwright's debugging tools, such as tracing and screenshots, to diagnose test failures.
-   - Familiarity with using browser developer tools to inspect elements and troubleshoot issues.
+# Run specific spec file
+npx playwright test tests/e2e/[feature].spec.ts
 
-7. **Best Practices**
-   - Understanding best practices for writing reliable and maintainable tests, including avoiding flakiness and ensuring tests are independent.
-   - Knowledge of how to organize tests and use fixtures for setup and teardown.
+# Run with UI mode for debugging
+npx playwright test --ui
 
-## Example Test Structure
-
-Here is a basic example of how a Playwright test might be structured in the `tests/e2e/hello-world.spec.ts` file:
-
-```javascript
-import { test, expect } from '@playwright/test';
-
-test('homepage has title', async ({ page }) => {
-  await page.goto('http://localhost:3000');
-  await expect(page).toHaveTitle(/Hello World/);
-});
+# Run with headed browser
+npx playwright test --headed
 ```
 
-## Conclusion
+---
 
-By mastering these skills, developers can effectively leverage Playwright to ensure the quality and reliability of their Next.js applications through comprehensive end-to-end testing.
+## Post-run Checklist
+1. All tests must PASS before marking task done
+2. If any test fails: capture screenshot + console log → hand to Debugger agent
+3. Attach HTML report path in task summary: `playwright-report/index.html`
+
+---
+
+## Evidence Requirements
+Tester agent MUST output:
+- Pass/fail count
+- Screenshot of final UI state
+- Any console errors captured during test

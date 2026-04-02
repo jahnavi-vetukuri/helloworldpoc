@@ -34,5 +34,25 @@
       "step": "debug",
       "description": "Use Chrome DevTools to debug any issues that arise."
     }
-  ]
+  ],
+  "mcpServers": {
+    "shell": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-everything"],
+      "description": "Shell/terminal MCP server. Gives the agent hands to run CLI commands: start Next.js dev server, run builds, execute npm scripts, and run Playwright test suites.",
+      "capabilities": [
+        "run_terminal_command",
+        "read_file",
+        "write_file",
+        "list_directory"
+      ],
+      "env": {
+        "PROJECT_ROOT": "e:\\poc\\hello-world-agentic-frontend",
+        "DEV_SERVER_URL": "http://localhost:3000",
+        "DEV_COMMAND": "npm run dev",
+        "TEST_COMMAND": "npm run test",
+        "BUILD_COMMAND": "npm run build"
+      }
+    }
+  }
 }

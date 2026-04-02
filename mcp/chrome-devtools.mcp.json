@@ -45,5 +45,24 @@
         "headless-testing"
       ]
     }
+  },
+  "mcpServers": {
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "description": "Puppeteer MCP server for Chrome DevTools Protocol access. Gives the agent eyes to inspect the live DOM, read console errors, monitor network requests, and capture screenshots for visual verification.",
+      "capabilities": [
+        "puppeteer_navigate",
+        "puppeteer_screenshot",
+        "puppeteer_click",
+        "puppeteer_evaluate",
+        "puppeteer_fill",
+        "puppeteer_select",
+        "puppeteer_hover"
+      ],
+      "env": {
+        "PUPPETEER_HEADLESS": "false"
+      }
+    }
   }
 }
