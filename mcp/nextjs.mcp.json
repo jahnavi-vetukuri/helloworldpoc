@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "description": "MCP configuration for Next.js application",
+  "capabilities": {
+    "implement": {
+      "description": "Ability to implement changes in the Next.js application.",
+      "skills": [
+        "frontend-dev"
+      ]
+    },
+    "test": {
+      "description": "Ability to run Playwright tests and verify functionality.",
+      "skills": [
+        "playwright-testing"
+      ]
+    },
+    "debug": {
+      "description": "Ability to debug using Chrome DevTools.",
+      "skills": [
+        "chrome-devtools-debugging"
+      ]
+    }
+  },
+  "workflow": [
+    {
+      "step": "implement",
+      "description": "Implement requested changes in the Next.js application."
+    },
+    {
+      "step": "test",
+      "description": "Open the browser and test the changes using Playwright."
+    },
+    {
+      "step": "debug",
+      "description": "Use Chrome DevTools to debug any issues that arise."
+    }
+  ]
+}

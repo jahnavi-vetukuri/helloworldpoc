@@ -1,0 +1,49 @@
+{
+  "version": "1.0",
+  "description": "MCP configuration for Chrome DevTools",
+  "capabilities": {
+    "debugging": {
+      "enabled": true,
+      "features": [
+        "element-inspector",
+        "console-logging",
+        "network-monitoring",
+        "performance-analysis"
+      ]
+    },
+    "navigation": {
+      "enabled": true,
+      "features": [
+        "page-navigation",
+        "screenshot-capture",
+        "console-output"
+      ]
+    },
+    "testing": {
+      "enabled": true,
+      "features": [
+        "test-execution",
+        "test-verification",
+        "error-reporting"
+      ]
+    }
+  },
+  "integration": {
+    "nextjs": {
+      "enabled": true,
+      "features": [
+        "hot-reloading",
+        "server-side-rendering",
+        "static-site-generation"
+      ]
+    },
+    "playwright": {
+      "enabled": true,
+      "features": [
+        "browser-automation",
+        "test-scripting",
+        "headless-testing"
+      ]
+    }
+  }
+}

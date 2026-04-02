@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "description": "MCP configuration for Playwright to enable automated testing and browser interaction.",
+  "capabilities": {
+    "runTests": true,
+    "openBrowser": true,
+    "takeScreenshots": true,
+    "consoleLogs": true
+  },
+  "testFramework": "Playwright",
+  "browser": {
+    "type": "chromium",
+    "headless": false
+  },
+  "testDirectory": "./tests/e2e",
+  "reporting": {
+    "enabled": true,
+    "reportFormat": "html"
+  }
+}

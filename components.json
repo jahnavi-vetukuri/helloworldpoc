@@ -1,0 +1,9 @@
+{
+  "components": [
+    {
+      "name": "Button",
+      "path": "components/ui/button.tsx",
+      "description": "A reusable button component for the application."
+    }
+  ]
+}
