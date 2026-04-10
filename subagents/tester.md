@@ -36,3 +36,6 @@ Write and execute Playwright E2E tests. Verify features meet acceptance criteria
 - DO NOT mark task done if any test fails
 - DO NOT write tests that only test implementation details — test user-visible behavior
 - DO NOT skip the console error check test
+- DO NOT register `page.on("console", ...)` inside individual tests — always use `test.beforeEach` so the listener is attached before navigation
+- DO NOT repeat `page.goto()` in every test — use `test.beforeEach` when 3 or more tests in a describe block share the same URL
+- DO NOT omit `test.afterEach` failure screenshot hook — every describe block testing a page MUST include it for Debugger handoff evidence

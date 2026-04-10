@@ -33,3 +33,4 @@ Orchestrator assigns a feature request or fix task.
 - DO NOT modify `globals.css` or `layout.tsx` unless explicitly instructed
 - DO NOT add npm dependencies without explicit approval
 - DO NOT use inline styles — Tailwind classes only
+- DO add `data-testid="[element-name]"` attributes to all interactive elements (buttons, forms, inputs, links) and key structural elements (cards, sections) so the Tester agent can use stable selectors

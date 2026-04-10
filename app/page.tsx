@@ -22,6 +22,12 @@ const HomePage = () => {
                     Contact Us →
                 </Link>
                 <Link
+                    href="/feed"
+                    className="bg-violet-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-violet-700 transition-colors"
+                >
+                    The Pulse →
+                </Link>
+                <Link
                     href="/new-page"
                     className="border border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-medium hover:bg-gray-100 transition-colors"
                 >
