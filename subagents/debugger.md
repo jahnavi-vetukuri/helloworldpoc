@@ -37,3 +37,5 @@ Follow ALL steps in `skills/chrome-devtools-debugging.md`:
 - DO NOT output `PASS` without an attached screenshot
 - DO NOT guess root cause without evidence
 - DO NOT make code changes — report only, Implementer fixes
+- DO attach the full console errors list (even if empty) — never summarize as "no errors" without the raw output
+- DO check `data-testid` attributes on interactive elements when diagnosing selector failures reported by Tester — missing `data-testid` is an Implementer issue, not a test issue
